@@ -12,6 +12,7 @@
 		0364B04E24D3EF0F0045674F /* EssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 0364B04024D3EF0E0045674F /* EssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0364B05924D3EF1A0045674F /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364B05724D3EF1A0045674F /* FeedLoader.swift */; };
 		0364B05A24D3EF1A0045674F /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0364B05824D3EF1A0045674F /* FeedItem.swift */; };
+		03E4454B24DE6C4600FF0D9D /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4454A24DE6C4600FF0D9D /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		0364B04D24D3EF0E0045674F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0364B05724D3EF1A0045674F /* FeedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		0364B05824D3EF1A0045674F /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		03E4454A24DE6C4600FF0D9D /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				0364B04B24D3EF0E0045674F /* EssentialFeedTests.swift */,
 				0364B04D24D3EF0E0045674F /* Info.plist */,
+				03E4454A24DE6C4600FF0D9D /* RemoteFeedLoaderTests.swift */,
 			);
 			path = EssentialFeedTests;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E4454B24DE6C4600FF0D9D /* RemoteFeedLoaderTests.swift in Sources */,
 				0364B04C24D3EF0E0045674F /* EssentialFeedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
