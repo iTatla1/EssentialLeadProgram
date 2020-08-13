@@ -32,14 +32,7 @@ public final class RemoteFeedLoader{
         client.get(from: url){ response in
             switch response  {
             case let .success(data, response):
-                do{
-                    let items = try FeedItemsMapper.map(data, response)
-                    completion(.success(items))
-                }
-                catch {
-                    completion(.failure(.invalidData))
-                }
-                
+                completion(FeedItemsMapper.map(data, response))
             case .failure( _):
                 completion(.failure(.connectivity))
             }
