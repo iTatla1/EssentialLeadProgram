@@ -14,9 +14,7 @@ public enum LoadFeedResult{
 }
 
 
-
-
-protocol FeedLoader {
+public protocol FeedLoader {
     associatedtype Error: Swift.Error
     func load(completion: @escaping (LoadFeedResult) -> Void)
 }
