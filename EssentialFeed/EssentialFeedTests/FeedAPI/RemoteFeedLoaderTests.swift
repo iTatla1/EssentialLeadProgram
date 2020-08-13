@@ -35,8 +35,8 @@ class RemoteFeedLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         expect(sut, toCompleteWithResult: .failure(.connectivity), when: {
-                let clientError = NSError(domain: "Test", code: 0)
-                client.complete(with: clientError)
+            let clientError = NSError(domain: "Test", code: 0)
+            client.complete(with: clientError)
         })
     }
     
@@ -74,7 +74,7 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         
         let item1 = makeItem(id: UUID(), imageURL: URL(string: "http://www.a-utl.com")!)
-       
+        
         let item2 = makeItem(id: UUID(), description: "A description", location: "A location", imageURL: URL(string: "http://www.another-utl.com")!)
         let items = [item1.model,item2.model]
         
@@ -83,6 +83,17 @@ class RemoteFeedLoaderTests: XCTestCase {
             client.complete(withStatusCode: 200, data: jsonData)
         })
         
+    }
+    
+    func test_load_doesNotDeliverCompletionHandlerAfterSUTHasBeenDeAllocated(){
+        let client = HTTPClientSpy()
+        var sut: RemoteFeedLoader? = RemoteFeedLoader(url: URL(string: "http://www.a-url.com")!, client: client)
+        
+        var capturedResults = [RemoteFeedLoader.Result]()
+        sut?.load {capturedResults.append($0)}
+        sut = nil
+        client.complete(withStatusCode: 200, data: makeItemsJson([]))
+        XCTAssertTrue(capturedResults.isEmpty)
     }
     
     
