@@ -142,6 +142,23 @@ class CacheFeedUseCaseTests: XCTestCase {
         XCTAssertEqual(receiveError as NSError?, insertionError)
     }
     
+    func test_save_succeedOnSuccessfulInsertionCache() {
+        let (sut, store) = makeSUT()
+        let items = [uniqueItem(), uniqueItem(), uniqueItem()]
+        
+        var receiveError: Error?
+        let exp = expectation(description: "Run Completion Block")
+        sut.saveItems(items) {error in
+            receiveError = error
+            exp.fulfill()
+        }
+        store.completeDeletionSuccessfully()
+        store.completeInsertionSuccessfully()
+        wait(for: [exp], timeout: 1)
+        
+        XCTAssertNil(receiveError)
+    }
+    
     //MARK:- Helpers
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init,file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStore) {
