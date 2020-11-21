@@ -14,7 +14,7 @@ internal final class FeedItemsMapper {
     private struct Root: Decodable {
         let items: [RemoteFeedItem]
     }
-    
+
     internal static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [RemoteFeedItem] {
         guard response.statusCode == OK_200,
             let root = try? JSONDecoder().decode(Root.self, from: data)
@@ -23,9 +23,3 @@ internal final class FeedItemsMapper {
         
     }
 }
-
-
-
-
-
-
