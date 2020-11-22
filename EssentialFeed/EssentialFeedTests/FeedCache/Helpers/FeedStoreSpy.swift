@@ -10,6 +10,7 @@ import Foundation
 import EssentialFeed
 
 class FeedStoreSpy: FeedStore {
+    
     enum ReceivedMessage: Equatable {
         case deleteCachedFeed
         case insert([LocalFeedImage], Date)
@@ -19,6 +20,7 @@ class FeedStoreSpy: FeedStore {
     
     private var deletionCompletions: [DeletionCompletion] = []
     private var insertionCompletions: [InsertCompletion] = []
+    private var retrivalCompletions: [RetrievalCompletion] = []
     
     func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         deletionCompletions.append(completion)
@@ -38,6 +40,10 @@ class FeedStoreSpy: FeedStore {
         insertionCompletions[index](error)
     }
     
+    func completeRetrieval(with error: NSError, at index: Int = 0) {
+        retrivalCompletions[index](error)
+    }
+    
     func completeInsertionSuccessfully(at index: Int = 0) {
         insertionCompletions[index](nil)
     }
@@ -46,7 +52,8 @@ class FeedStoreSpy: FeedStore {
         deletionCompletions[index](nil)
     }
     
-    func retrieve() {
+    func retrieve(completion: @escaping RetrievalCompletion) {
+        retrivalCompletions.append(completion)
         receivedMessages.append(.retrieve)
     }
 }
