@@ -10,7 +10,11 @@ import XCTest
 import EssentialFeed
 
 class CodableFeedStore {
-    private let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
+    private let storeURL: URL
+    
+    init(storeURL: URL) {
+        self.storeURL = storeURL
+    }
     
     private struct Cache: Codable {
         let feed: [CodableFeedImage]
@@ -134,7 +138,8 @@ class CodableFeedStoreTests: XCTestCase {
     //MARK:- Private Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> CodableFeedStore{
-        let sut = CodableFeedStore()
+        let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("image-feed.store")
+        let sut = CodableFeedStore(storeURL: storeURL)
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
     }
