@@ -76,7 +76,7 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     func test_retrieve_deliversEmptyOnEmptyCache() {
-        let sut = CodableFeedStore()
+        let sut = makeSUT()
         
         let exp = expectation(description: "Wait for async to fulfill")
         sut.retrieve {result in
@@ -92,7 +92,7 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     func test_retrieve_hasNoSideEffectOnEmptyCache() {
-        let sut = CodableFeedStore()
+        let sut = makeSUT()
         
         let exp1 = expectation(description: "Wait for async to fulfill")
         sut.retrieve {firstResult in
@@ -110,7 +110,7 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValue() {
-        let sut = CodableFeedStore()
+        let sut = makeSUT()
         let feed = uniqueImageFeed().local
         let timestamp = Date()
         
@@ -129,6 +129,12 @@ class CodableFeedStoreTests: XCTestCase {
             }
         }
         wait(for: [exp1], timeout: 1.0)
+    }
+    
+    //MARK:- Private Helpers
+    
+    private func makeSUT() -> CodableFeedStore{
+        return  CodableFeedStore()
     }
     
 }
