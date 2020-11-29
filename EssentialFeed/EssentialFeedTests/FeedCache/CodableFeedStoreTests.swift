@@ -92,12 +92,7 @@ class CodableFeedStoreTests: XCTestCase {
         let feed = uniqueImageFeed().local
         let timestamp = Date()
         
-        let exp1 = expectation(description: "Wait for async to fulfill")
-        sut.insert(feed, timeStamp: timestamp) {insertionError in
-            XCTAssertNil(insertionError, "Expeced the feed to be inserted successfully")
-            exp1.fulfill()
-        }
-        wait(for: [exp1], timeout: 1.0)
+       insert((feed,timestamp), to: sut)
         
         expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp))
     }
@@ -107,12 +102,7 @@ class CodableFeedStoreTests: XCTestCase {
         let feed = uniqueImageFeed().local
         let timestamp = Date()
         
-        let exp1 = expectation(description: "Wait for async to fulfill")
-        sut.insert(feed, timeStamp: timestamp) {insertionError in
-            XCTAssertNil(insertionError, "Expeced the feed to be inserted successfully")
-            exp1.fulfill()
-        }
-        wait(for: [exp1], timeout: 1.0)
+        insert((feed,timestamp), to: sut)
         
         expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
     }
@@ -141,6 +131,15 @@ class CodableFeedStoreTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: CodableFeedStore) {
+        let exp1 = expectation(description: "Wait for async to fulfill")
+        sut.insert(cache.feed, timeStamp: cache.timestamp) {insertionError in
+            XCTAssertNil(insertionError, "Expeced the feed to be inserted successfully")
+            exp1.fulfill()
+        }
+        wait(for: [exp1], timeout: 1.0)
     }
     
     private func expect(_ sut: CodableFeedStore, toRetrieveTwice expectedResult: RetrievedCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
