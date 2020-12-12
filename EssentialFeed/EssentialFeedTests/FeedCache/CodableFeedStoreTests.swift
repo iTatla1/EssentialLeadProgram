@@ -12,6 +12,8 @@ import EssentialFeed
 typealias FailableFeedStoreSpecs = FailableRetrieveFeedStoreSpecs & FailableInsertFeedStoreSpecs & FailableDeleteFeedStoreSpecs
 class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
     
+    
+    
     override func setUp() {
         super.setUp()
         setupEmptyStoreState()
@@ -43,6 +45,18 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         let sut = makeSUT()
         assertThatRetrieveHasNoSideEffectsOnNonEmptyCache(on: sut)
     }
+    
+    
+    func test_delete_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
+        assertThatDeleteDeliversNoErrorOnNonEmptyCache(on: sut)
+    }
+    
+    func test_insert_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
+        assertThatInsertDeliversNoErrorOnNonEmptyCache(on: sut)
+    }
+    
     
     func test_retrieve_deliversFailureOnRetrivalError() {
         let storeURL = testSpecificStoreURL()
