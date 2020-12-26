@@ -20,7 +20,7 @@ public final class RemoteFeedLoader: FeedLoader{
     }
     
     
-    public typealias Result = LoadFeedResult
+    public typealias Result = FeedLoader.Result
     
     public init(url: URL, client: HTTPClient) {
         self.client = client

@@ -34,14 +34,14 @@ class EssentialFeedAPIEndToEndTests: XCTestCase {
     
     //MARK:- Helpers
     
-    private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> LoadFeedResult? {
+    private func getFeedResult(file: StaticString = #file, line: UInt = #line) -> FeedLoader.Result? {
         let testServerURL = URL(string: "https://run.mocky.io/v3/4d351ef2-e835-47ea-8e95-5d71ebaa3039")!
         let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         let loader = RemoteFeedLoader(url: testServerURL, client: client)
         trackForMemoryLeak(client, file: file, line: line)
         trackForMemoryLeak(loader, file: file, line: line)
         let exp = expectation(description: "Wait for load completion")
-        var receivedResult: LoadFeedResult?
+        var receivedResult: FeedLoader.Result?
         
         loader.load { result in
             receivedResult = result
