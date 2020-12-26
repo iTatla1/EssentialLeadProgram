@@ -125,9 +125,9 @@ extension FeedStoreSpecs where Self: XCTestCase {
             switch (expectedResult, retrievedResult) {
             case (.empty, .empty), (.failure, .failure):
                 break
-            case let (.found(expected), .found(retrieved)):
-                XCTAssertEqual(expected.feed, retrieved.feed, file: file, line: line)
-                XCTAssertEqual(expected.timestamp, retrieved.timestamp, file: file, line: line)
+            case let (.found(expectedFeed, expectedTimestamp), .found(retrievedFeed, retrievedTimeStamp)):
+                XCTAssertEqual(expectedFeed, retrievedFeed, file: file, line: line)
+                XCTAssertEqual(expectedTimestamp, retrievedTimeStamp, file: file, line: line)
             default:
                 XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
             }
