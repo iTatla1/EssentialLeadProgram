@@ -81,7 +81,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         let latestTimeStamp = Date()
         let latestInsertionError = insert((latestFeed, latestTimeStamp), to: sut)
         XCTAssertNil(latestInsertionError, "Expected to override cache successfully")
-        expect(sut, toRetrieve: .success(.found(feed: latestFeed, timestamp: latestTimeStamp)))
+        expect(sut, toRetrieve: .success(.some(CachedFeed(feed: latestFeed, timestamp: latestTimeStamp))))
     }
     
     func test_insert_delieversErrorOnInsertionError() {
@@ -104,7 +104,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         _ = insert((feed, timestamp), to: sut)
         
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
     
     func test_delete_hasNoSideEffectsOnEmptyCache() {
@@ -113,7 +113,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         let deletionError = deleteCache(from: sut)
         XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
     
     func test_delete_emptiesPreviouslyInsertedCache() {
@@ -123,7 +123,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         let deletionError = deleteCache(from: sut)
         XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
     
     func test_delets_deliversErrorOnDeletionError() {
@@ -133,7 +133,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         let deletionError = deleteCache(from: sut)
         XCTAssertNotNil(deletionError, "Expected cahce deletion to fail")
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
     
     func test_delets_hasNoSideEffectOnDeletionError() {
@@ -142,7 +142,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs{
         
         _ = deleteCache(from: sut)
         
-        expect(sut, toRetrieve: .success(.empty))
+        expect(sut, toRetrieve: .success(.none))
     }
     
     func test_storeSideEffects_runSerially(){
