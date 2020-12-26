@@ -141,7 +141,12 @@ extension FeedStoreSpecs where Self: XCTestCase {
         let exp1 = expectation(description: "Wait for async to fulfill")
         var receivedError: Error?
         sut.insert(cache.feed, timeStamp: cache.timestamp) {insertionError in
-            receivedError = insertionError
+            switch insertionError {
+            case .failure(let error):
+                receivedError = error
+            default:
+                receivedError = nil
+            }
             exp1.fulfill()
         }
         wait(for: [exp1], timeout: 1.0)
@@ -154,7 +159,12 @@ extension FeedStoreSpecs where Self: XCTestCase {
         
         var receivedError: Error?
         sut.deleteCachedFeed { (deletionError) in
-            receivedError = deletionError
+            switch deletionError {
+            case .failure(let error):
+                receivedError = error
+            default:
+                receivedError = nil
+            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)

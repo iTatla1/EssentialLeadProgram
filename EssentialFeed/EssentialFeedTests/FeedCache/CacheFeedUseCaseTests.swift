@@ -114,8 +114,13 @@ class CacheFeedUseCaseTests: XCTestCase {
         
         var receiveError: Error?
         let exp = expectation(description: "Run Completion Block")
-        sut.save(uniqueImageFeed().models) {error in
-            receiveError = error
+        sut.save(uniqueImageFeed().models) {expectResult in
+            switch expectResult {
+            case let .failure(error):
+                receiveError = error
+            default:
+                receiveError = nil
+            }
             exp.fulfill()
         }
         action()
