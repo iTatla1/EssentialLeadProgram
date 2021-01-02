@@ -12,11 +12,28 @@ struct FeedImageViewModel {
     let imageName: String
 }
 final class FeedViewController: UITableViewController {
+    private let feed = FeedImageViewModel.prototypeFeed
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FeedImageViewModel.prototypeFeed.count
+        return feed.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "FeedImageCell") ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedImageCell", for: indexPath) as! FeedImageTableViewCell
+        let model = feed[indexPath.row]
+        cell.configure(with: model)
+        return cell
+    }
+}
+
+extension FeedImageTableViewCell {
+    func configure(with model: FeedImageViewModel) {
+        locationLabel.text = model.location
+        locationContainer.isHidden = model.location == nil
+        
+        descriptionLabel.text = model.description
+        descriptionLabel.isHidden = model.description == nil
+        
+        feedImageView.image = UIImage(named: model.imageName)
     }
 }
