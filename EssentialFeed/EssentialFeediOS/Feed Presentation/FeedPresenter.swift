@@ -7,6 +7,7 @@
 //
 
 import EssentialFeed
+import Foundation
 
 struct FeedLoadingViewModel {
     let isLoading: Bool
@@ -28,7 +29,7 @@ final class FeedPresenter {
     typealias Observer<T> = (T) -> Void
     
     static var title: String {
-        "My Feed"
+        NSLocalizedString("FEED_VIEW_TITLE", tableName: "Feed", bundle: Bundle(for: FeedPresenter.self), comment: "Title for the feed view")
     }
     
     private let feedView: FeedView
