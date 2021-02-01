@@ -27,6 +27,7 @@
 		036C6E7825C7DB170051F1B4 /* UITableView+DequeueHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C6E7725C7DB170051F1B4 /* UITableView+DequeueHelper.swift */; };
 		036C6E7F25C7DDA20051F1B4 /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C6E7E25C7DDA20051F1B4 /* UIImageView+Animation.swift */; };
 		036C6E9125C7EEAB0051F1B4 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036C6E9325C7EEAB0051F1B4 /* Feed.strings */; };
+		036C6EA625C7EFFD0051F1B4 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C6EA525C7EFFD0051F1B4 /* FeedLocalizationTests.swift */; };
 		0382914C25BAA54400241403 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0382914325BAA54400241403 /* EssentialFeediOS.framework */; };
 		0382916E25BADB0C00241403 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382916D25BADB0C00241403 /* FeedUIIntegrationTests.swift */; };
 		0382917625BAF52100241403 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364B03D24D3EF0E0045674F /* EssentialFeed.framework */; platformFilter = ios; };
@@ -146,6 +147,8 @@
 		036C6E7E25C7DDA20051F1B4 /* UIImageView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		036C6E9225C7EEAB0051F1B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		036C6E9925C7EF070051F1B4 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Feed.strings; sourceTree = "<group>"; };
+		036C6E9F25C7EF880051F1B4 /* ur-Arab-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-Arab-PK"; path = "ur-Arab-PK.lproj/Feed.strings"; sourceTree = "<group>"; };
+		036C6EA525C7EFFD0051F1B4 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		0382914325BAA54400241403 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0382914625BAA54400241403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0382914B25BAA54400241403 /* EssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +342,7 @@
 				0382915225BAA54400241403 /* Info.plist */,
 				0382916D25BADB0C00241403 /* FeedUIIntegrationTests.swift */,
 				0382916C25BADB0B00241403 /* EssentialFeediOSTests-Bridging-Header.h */,
+				036C6EA525C7EFFD0051F1B4 /* FeedLocalizationTests.swift */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -670,6 +674,7 @@
 				en,
 				Base,
 				ar,
+				"ur-Arab-PK",
 			);
 			mainGroup = 0364B03324D3EF0E0045674F;
 			productRefGroup = 0364B03E24D3EF0E0045674F /* Products */;
@@ -804,6 +809,7 @@
 			files = (
 				0382918025BAF6F100241403 /* XCTest+MemoryLeakTrackigHelper.swift in Sources */,
 				0382916E25BADB0C00241403 /* FeedUIIntegrationTests.swift in Sources */,
+				036C6EA625C7EFFD0051F1B4 /* FeedLocalizationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +870,7 @@
 			children = (
 				036C6E9225C7EEAB0051F1B4 /* en */,
 				036C6E9925C7EF070051F1B4 /* ar */,
+				036C6E9F25C7EF880051F1B4 /* ur-Arab-PK */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
