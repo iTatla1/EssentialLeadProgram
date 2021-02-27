@@ -38,7 +38,8 @@
 		036CF53325EA30AB006ADC5A /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF53225EA30AB006ADC5A /* FeedErrorViewModel.swift */; };
 		036CF53B25EA4139006ADC5A /* UIRefreshControl+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF53A25EA4139006ADC5A /* UIRefreshControl+Helpers.swift */; };
 		036CF54325EA4E79006ADC5A /* FeddPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF54225EA4E79006ADC5A /* FeddPresenterTests.swift */; };
-		036CF55525EA5C65006ADC5A /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036CF55725EA5C65006ADC5A /* Feed.strings */; };
+		036CF56625EA5E54006ADC5A /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036CF56525EA5E54006ADC5A /* FeedPresenter.swift */; };
+		036CF57625EA5ECC006ADC5A /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 036CF55725EA5C65006ADC5A /* Feed.strings */; };
 		0382914C25BAA54400241403 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0382914325BAA54400241403 /* EssentialFeediOS.framework */; };
 		0382916E25BADB0C00241403 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0382916D25BADB0C00241403 /* FeedUIIntegrationTests.swift */; };
 		0382917625BAF52100241403 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0364B03D24D3EF0E0045674F /* EssentialFeed.framework */; platformFilter = ios; };
@@ -173,6 +174,7 @@
 		036CF55625EA5C65006ADC5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		036CF55D25EA5C6B006ADC5A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Feed.strings; sourceTree = "<group>"; };
 		036CF55E25EA5C6C006ADC5A /* ur-Arab-PK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ur-Arab-PK"; path = "ur-Arab-PK.lproj/Feed.strings"; sourceTree = "<group>"; };
+		036CF56525EA5E54006ADC5A /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		0382914325BAA54400241403 /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0382914625BAA54400241403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0382914B25BAA54400241403 /* EssentialFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,7 @@
 		0364B03F24D3EF0E0045674F /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				036CF56425EA5E3C006ADC5A /* FeedPresentation */,
 				03DCEDCE2568AD38009A6C51 /* FeedCache */,
 				03E4454C24DE84EB00FF0D9D /* FeedApi */,
 				0364B05B24D3EF210045674F /* FeedFeature */,
@@ -375,7 +378,15 @@
 			isa = PBXGroup;
 			children = (
 				036CF54225EA4E79006ADC5A /* FeddPresenterTests.swift */,
+			);
+			path = FeedPresentation;
+			sourceTree = "<group>";
+		};
+		036CF56425EA5E3C006ADC5A /* FeedPresentation */ = {
+			isa = PBXGroup;
+			children = (
 				036CF55725EA5C65006ADC5A /* Feed.strings */,
+				036CF56525EA5E54006ADC5A /* FeedPresenter.swift */,
 			);
 			path = FeedPresentation;
 			sourceTree = "<group>";
@@ -755,6 +766,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036CF57625EA5ECC006ADC5A /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +774,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				036CF55525EA5C65006ADC5A /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +819,7 @@
 				030B5F8524E5770600B60C2B /* FeedItemsMapper.swift in Sources */,
 				0364B05A24D3EF1A0045674F /* FeedItem.swift in Sources */,
 				03DCEDDD2568B60C009A6C51 /* RemoteFeedItem.swift in Sources */,
+				036CF56625EA5E54006ADC5A /* FeedPresenter.swift in Sources */,
 				039D2F82256E062200C47AA6 /* FeedCachePolicy.swift in Sources */,
 				03E4454E24DE851300FF0D9D /* RemoteFeedLoader.swift in Sources */,
 				03F4D5CE2584B29E005C50F5 /* FeedStore.xcdatamodeld in Sources */,
