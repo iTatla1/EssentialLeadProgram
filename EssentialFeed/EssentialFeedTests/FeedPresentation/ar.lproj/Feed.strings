@@ -1,0 +1,9 @@
+/* 
+  Feed.strings
+  EssentialFeed
+
+  Created by Muhammad Usman Tatla on 27/02/2021.
+  Copyright © 2021 Muhammad Usman Tatla. All rights reserved.
+*/
+"FEED_VIEW_TITLE" = "موجز بلدي";
+"FEED_VIEW_CONNECTION_ERROR" = "لا يمكن الاتصال بالخادم.";
